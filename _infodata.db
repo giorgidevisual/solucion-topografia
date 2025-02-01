@@ -1,0 +1,104 @@
+CREATE TABLE Users (
+    user_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    name TEXT NOT NULL,
+    email TEXT UNIQUE NOT NULL,
+    password TEXT NOT NULL, 
+    role TEXT NOT NULL DEFAULT 'customer',
+    registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    status BOOLEAN DEFAULT 1 
+);
+
+CREATE TABLE Categories (
+    category_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    category_name TEXT NOT NULL,
+    description TEXT,
+    category_image TEXT
+);
+
+CREATE TABLE Products (
+    product_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    product_name TEXT NOT NULL,
+    description TEXT,
+    price REAL NOT NULL, 
+    stock INTEGER NOT NULL DEFAULT 0,
+    category_id TEXT NOT NULL, 
+    main_image TEXT,
+    status BOOLEAN DEFAULT 1, 
+    FOREIGN KEY (category_id) REFERENCES Categories(category_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Carts (
+    cart_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    user_id TEXT NOT NULL, 
+    creation_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Cart_Details (
+    cart_detail_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))),
+    cart_id TEXT NOT NULL, 
+    product_id TEXT NOT NULL, 
+    quantity INTEGER NOT NULL DEFAULT 1,
+    unit_price REAL NOT NULL,
+    FOREIGN KEY (cart_id) REFERENCES Carts(cart_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Orders (
+    order_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    user_id TEXT NOT NULL, 
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    order_status TEXT NOT NULL DEFAULT 'pending',
+    total_amount REAL NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Order_Details (
+    order_detail_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    order_id TEXT NOT NULL, 
+    product_id TEXT NOT NULL,
+    quantity INTEGER NOT NULL DEFAULT 1,
+    unit_price REAL NOT NULL,
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Addresses (
+    address_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    user_id TEXT NOT NULL, 
+    street TEXT NOT NULL,
+    city TEXT NOT NULL,
+    state TEXT NOT NULL,
+    postal_code TEXT NOT NULL,
+    country TEXT NOT NULL,
+    phone TEXT,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Payment_Methods (
+    payment_method_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    method_name TEXT NOT NULL,
+    description TEXT
+);
+
+CREATE TABLE Payments (
+    payment_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    order_id TEXT NOT NULL,
+    payment_method_id TEXT NOT NULL, 
+    amount REAL NOT NULL,
+    payment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    payment_status TEXT NOT NULL DEFAULT 'pending',
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
+    FOREIGN KEY (payment_method_id) REFERENCES Payment_Methods(payment_method_id) ON DELETE CASCADE
+);
+
+CREATE TABLE Reviews (
+    review_id TEXT PRIMARY KEY DEFAULT (hex(randomblob(16))), 
+    user_id TEXT NOT NULL, 
+    product_id TEXT NOT NULL, 
+    rating INTEGER CHECK (rating >= 1 AND rating <= 5),
+    comment TEXT,
+    review_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES Users(user_id) ON DELETE CASCADE,
+    FOREIGN KEY (product_id) REFERENCES Products(product_id) ON DELETE CASCADE
+);
