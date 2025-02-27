@@ -1,5 +1,7 @@
 import express from 'express';
-import { handler as ssrHandler } from '../../dist/server/entry.mjs';
+import { handler as ssrHandler } from '../../../dist/server/entry.mjs';
+import dotenv from 'dotenv';    
+dotenv.config();
 
 
 const app = express();
@@ -19,10 +21,6 @@ app.use((req, res, next) => {
     ssrHandler(req, res, next, locals);
   });
 
-app.get(base, (req, res) => {
-    res.send('Hello World');
-    console.log('Hello World');
-});  
 
 const PORT = process.env.PORT || 3000;
 
