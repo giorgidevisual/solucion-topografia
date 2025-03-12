@@ -1,0 +1,34 @@
+---
+import BaseLayout from '@layouts/BaseLayout.astro';
+
+const pages = [
+  {
+    slug: undefined,
+    title: 'Astro Store',
+    text: 'Welcome to the Astro store!',
+  },
+  {
+    slug: 'about',
+    title: 'Astro products',
+    text: 'We have lots of products for you',
+  },
+  {
+    slug: 'contacto',
+    title: 'Contacto',
+    text: 'If you want to learn Astro, you must read this book.',
+  }
+];
+
+const { slug } = Astro.params;
+const page = pages.find((page) => page.slug === slug);
+if (!page) return Astro.redirect("/404");
+const { title, text } = page;
+
+
+---
+
+<BaseLayout>
+  <div>
+    <h1>!Esto es la página de, {title}</h1>
+  </div>  
+</BaseLayout>

@@ -1,5 +1,16 @@
+---
+const pages = Object.values(import.meta.glob('../pages/*.astro', { eager: true }));
+
+// Extraer la ruta y el título de cada página
+const pageLinks = pages.map((page:any) => {
+  const path = page.url.replace('../pages', '').replace('.astro', '');
+  const title = page.metadata?.title || path.replace('/', '');
+  return { path, title };
+});
+---
+
 <nav class="nav-links">
-  <a href="/">Home</a>
-  <a href="/about">About</a>
-  <a href="/blog">Blog</a>
+  {pageLinks.map((page) => (
+    <a href={page.path}>{page.title}</a>
+  ))}
 </nav>

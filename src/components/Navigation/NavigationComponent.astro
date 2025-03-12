@@ -1,0 +1,41 @@
+---
+import ButtonNavigation from './ButtonNavigation.astro'
+import iconEstacionTotal from '@assets/icon-estacion-total.svg'
+import iconGPS from '@assets/icon-gps.svg'
+import iconEscanerLaser from '@assets/icon-escaner-laser.svg'
+import iconTablet from '@assets/icon-tablet.svg'
+import iconCables from '@assets/icon-cables.svg'
+---
+<div>
+  <nav>
+    <ButtonNavigation title="Estación Total" icon={iconEstacionTotal.src}/>
+    <ButtonNavigation title="GPS"  icon={iconGPS.src}/>
+    <ButtonNavigation title="Escáner láser" icon={iconEscanerLaser.src}/>
+    <ButtonNavigation title="Tablets"  icon={iconTablet.src}/>
+    <ButtonNavigation title="Accesorios"  icon={iconCables.src}/>
+    <ButtonNavigation title="Cables" icon={iconCables.src}/>
+  </nav>
+</div>
+
+
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+    padding-inline: 1rem;
+    margin-block-start: -2rem;
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    flex-wrap: wrap;
+    max-inline-size: 1080px;
+    gap:3px;
+    background-color: var(--back);
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: var(--base2-color);
+
+  }
+</style>

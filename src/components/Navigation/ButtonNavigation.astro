@@ -1,0 +1,40 @@
+---
+
+const { title, icon } = Astro.props
+---
+<button>
+  <figure>
+    <img src={icon} alt="icono">
+  </figure>
+ <span>{title}</span>
+</button>
+
+<style>
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .5rem;
+    border: none;
+    padding: 10px 16px;
+    color: var(--primary-color);
+    background-color: var(--background-light-color);
+    font-weight: 600;
+    font-size: large;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  figure {
+    display: flex;
+    inline-size: 100%;
+    block-size: 4rem;
+
+    img {
+      object-fit: contain;
+    }
+
+  }
+  
+</style>
