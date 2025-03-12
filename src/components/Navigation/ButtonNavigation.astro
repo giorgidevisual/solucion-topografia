@@ -16,11 +16,12 @@ const { title, icon } = Astro.props
     align-items: center;
     gap: .5rem;
     border: none;
-    padding: 10px 16px;
+    padding: clamp(1rem, 0.857rem + 0.71vw, 1.5rem) clamp(0.8rem, 0.743rem + 0.29vw, 1rem);
     color: var(--primary-color);
     background-color: var(--background-light-color);
     font-weight: 600;
-    font-size: large;
+    font-size: clamp(1rem, 0.964rem + 0.18vw, 1.125rem);
+    letter-spacing: -0.3px;
     text-transform: uppercase;
     text-decoration: none;
     transition: color 0.2s;
@@ -30,11 +31,18 @@ const { title, icon } = Astro.props
     display: flex;
     inline-size: 100%;
     block-size: 4rem;
+    color: var(--primary-color);
 
     img {
+  
       object-fit: contain;
     }
 
+  }
+
+  button:hover {
+    background-color: var(--primary-color);
+    color: var(--background-light-color);
   }
   
 </style>
