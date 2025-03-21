@@ -1,0 +1,51 @@
+---
+import iconAccesorios from "@assets/icon-accesorios.svg?raw";
+import iconAsesoramiento from "@assets/icon-asesoramiento.svg?raw";
+import iconEntrega from "@assets/icon-entrega.svg?raw";
+import iconFinaciamiento from "@assets/icon-finaciamiento.svg?raw";
+import iconPrecision from "@assets/icon-precision.svg?raw";
+import iconTecnico from "@assets/icon-tecnico.svg?raw";
+import FeatureItems from "./FeatureItem.astro";
+---
+
+<section>
+  <FeatureItems
+    title="Financiamiento flexible"
+    description="Ofrecemos opciones de financiamiento para hacer que los equipos sean más asequibles."
+    icon={iconFinaciamiento}
+  />
+  <FeatureItems
+    title="Entrega rápida"
+    description="Garantizamos entregas rápidas para que los proyectos no se detengan."
+    icon={iconEntrega}
+  />
+  <FeatureItems
+    title="Continuidad del trabajo"
+    description="Ofrecemos un servicio técnico rápido para minimizar el tiempo de inactividad."
+    icon={iconTecnico}
+  />
+  <FeatureItems
+    title="Alta precisión garantizada"
+    description="Ofrecemos equipos de topografía de alta precisión y confiabilidad."
+    icon={iconPrecision}
+  />
+  <FeatureItems
+    title="Accesorios compatibles"
+    description="Ofrecemos accesorios compatibles para varias marcas de equipos de topografía."
+    icon={iconAccesorios}
+  />
+  <FeatureItems
+    title="Asesoramiento personalizado"
+    description="Ofrecemos asesoramiento personalizado para ahorrar tiempo en la elección del equipo."
+    icon={iconAsesoramiento}
+  />
+</section>
+
+<style>
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    max-inline-size: 1080px;
+    margin-inline: auto;
+  }
+</style>

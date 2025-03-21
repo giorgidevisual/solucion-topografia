@@ -1,9 +1,11 @@
 ---
 import Hero from '@components/Hero.astro';
 import Navigation from '@components/Navigation.astro';
-import NavigationComponent from '@components/Navigation/NavigationComponent.astro';
+import NavigationComponent from '@components/navigation/NavigationComponent.astro';
 import Welcome from '@components/Welcome.astro';
 import BaseLayout from '@layouts/BaseLayout.astro';
+
+import FeaturesSection from '@components/features/FeaturesSection.astro';
 import "@styles/global.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
@@ -14,7 +16,8 @@ import "@styles/global.css";
 	<Navigation />
 	<Hero />
 	<NavigationComponent />
-	<Welcome />
+	<FeaturesSection />	
+	
 	<section>
 		<div id="parent-div">Objetivo aquí</div>
 		<button hx-get="/partials/clicked/"

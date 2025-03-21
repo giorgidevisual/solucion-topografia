@@ -1,12 +1,11 @@
 ---
-
-const { title, icon } = Astro.props
+const { title, icon } = Astro.props;
 ---
 <button>
-  <figure>
-    <img src={icon} alt="icono">
+  <figure class="icon-wrapper">
+    <div set:html={icon} class="icon-container"></div>
   </figure>
- <span>{title}</span>
+  <h2>{title}</h2>
 </button>
 
 <style>
@@ -14,7 +13,7 @@ const { title, icon } = Astro.props
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: .5rem;
+    gap: .8rem;
     border: none;
     padding: clamp(1rem, 0.857rem + 0.71vw, 1.5rem) clamp(0.8rem, 0.743rem + 0.29vw, 1rem);
     color: var(--primary-color);
@@ -27,22 +26,33 @@ const { title, icon } = Astro.props
     transition: color 0.2s;
   }
 
-  figure {
+  .icon-wrapper {
     display: flex;
     inline-size: 100%;
-    block-size: 4rem;
-    color: var(--primary-color);
+    block-size: auto;
+  }
 
-    img {
-  
-      object-fit: contain;
-    }
+  .icon-container {
+    display: flex;
+    min-inline-size: 100%;
+    justify-content: center;
+  }
 
+    .icon-container svg {
+    width: 100%;
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  h2 {
+    font-size: var(--subtitle2);
   }
 
   button:hover {
-    background-color: var(--primary-color);
+    background-color: var(--secondary-color);
     color: var(--background-light-color);
+    transform: scale(1.1);
   }
-  
 </style>
