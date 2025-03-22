@@ -16,7 +16,7 @@ import { productHighlights } from "@components/consts/productHighlights";
       />
     </figure>
     <div class="buttons-container">
-      <button>Ver más</button>
+      <button>Quiero ver el producto</button>
     </div>
   </header>
   <div class="thumbnails">
@@ -42,13 +42,13 @@ import { productHighlights } from "@components/consts/productHighlights";
 <style>
   .product-highlights-section {
     position: relative;
-    margin-block: 3rem;
+    margin-block: 4rem;
+    margin-inline: 3rem;
   }
   .product-highlight {
     display: flex;
     flex-wrap: wrap;
     block-size: auto;
-    margin-inline: 2rem;
   }
 
   .details-highlight,
@@ -63,7 +63,7 @@ import { productHighlights } from "@components/consts/productHighlights";
 
   :where(.details-highlight h2) {
     font-size: var(--subtitle);
-    text-transform: uppercase;
+    
     color: var(--primary-color);
   }
   :where(.details-highlight p) {
@@ -75,14 +75,19 @@ import { productHighlights } from "@components/consts/productHighlights";
     flex-basis: 45%;
     text-align: center;
     overflow: hidden;
+    padding-block: 1rem;
+    border-radius: 23px;
+    background: rgb(25,90,160);
+    background: -moz-linear-gradient(0deg, rgba(25,90,160,1) 0%, rgba(255,255,255,0) 55%);
+    background: -webkit-linear-gradient(0deg, rgba(25,90,160,1) 0%, rgba(255,255,255,0) 55%);
+    background: linear-gradient(0deg, rgba(25,90,160,1) 0%, rgba(255,255,255,0) 55%);;
   }
 
   .image-highlight img {
-    max-width: 100%;
-    height: auto;
-    
+    object-fit: contain;
     block-size: 26rem;
-    aspect-ratio: 9/16;
+    aspect-ratio: 9/16; 
+ 
     
   }
 
@@ -101,9 +106,10 @@ import { productHighlights } from "@components/consts/productHighlights";
     display: grid;
     width: 100px;
     height: 100px;
-    border-radius: 16px;
-    border: 3px solid var(--primary-color);    
+    border-radius: 23px;
+    border: 4px solid var(--primary-color);    
     transition: all 0.3s ease;
+    background-color: var(--base2-color);
 
     &:hover {
       filter: brightness(1.1);
@@ -111,9 +117,26 @@ import { productHighlights } from "@components/consts/productHighlights";
     }
   }
 
+  button {
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-size: var(--text);
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border:none;
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    inline-size: fit-content;
+    transition: all .1s ease ;
+    margin-block-start: 2rem; 
+    margin-inline: auto;
 
-
-
+    &:hover {
+        background-color: var(--secondary-color);
+        color: var(--base-color);
+        transform: scale(1.1);
+    }
+  }
 </style>
 
 <script>

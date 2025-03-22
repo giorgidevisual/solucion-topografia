@@ -17,13 +17,12 @@ import { featuresInfo } from "@components/consts/featuresInfo";
 
   article {
     container: features / inline-size;
+    padding: 3rem;
   }
   section {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    max-inline-size: 1080px;
     margin-inline: auto;
-    margin-block: 3rem;
   }
 
   @container features (width < 480px){

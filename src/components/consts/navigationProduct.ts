@@ -3,6 +3,7 @@ import iconGPS from '@assets/icon-gps.svg?raw';
 import iconEscanerLaser from '@assets/icon-escaner-laser.svg?raw';
 import iconTablet from '@assets/icon-tablet.svg?raw';
 import iconCables from '@assets/icon-cables.svg?raw';
+import iconAccesorios from '@assets/icon-accesesorios-topografia.svg?raw';
 
 
 export const navigationProduct = [
@@ -34,6 +35,6 @@ export const navigationProduct = [
   {
     id: 6,
     title: "Accesorios",
-    icon: iconCables,
+    icon: iconAccesorios,
   }
 ];

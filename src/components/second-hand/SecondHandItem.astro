@@ -1,0 +1,27 @@
+---
+const { icon, title, description } = Astro.props;
+---
+
+<div class="second-hand-item">
+  <div set:html={icon} />
+  <h3 class="subtitle2">{title}</h3>
+  <p class="text">{description}</p>
+</div>
+
+<style>
+  .second-hand-item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    color: var(--base-color);
+
+    & div {
+     display: flex;
+     inline-size: 4rem; 
+     block-size: 4rem;
+     & svg {
+      flex-grow: 1;
+     }
+    }
+  }
+</style>
