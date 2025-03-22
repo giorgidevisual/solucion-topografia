@@ -1,0 +1,34 @@
+---
+import ButtonNavigation from './ButtonNavigation.astro';
+import { navigationProduct } from "@components/consts/navigationProduct";
+---
+<div>
+  <nav>
+    {navigationProduct.map((item) => (
+      <ButtonNavigation title={item.title} icon={item.icon}/>
+    ))}
+  </nav>
+</div>
+
+<style>
+  div {
+    display: flex;
+    justify-content: center;
+    padding-inline: 1rem;
+    margin-block-start: -2rem;
+  }
+
+  nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    flex-wrap: wrap;
+    max-inline-size: 1080px;
+    gap: 3px;
+    background-color: var(--back);
+    border-radius: 25px;
+    overflow: hidden;
+    background-color: var(--base2-color);
+    box-shadow: -1px 6px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+</style>

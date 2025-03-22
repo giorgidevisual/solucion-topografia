@@ -1,0 +1,50 @@
+---
+const { icon, title, description } = Astro.props;
+---
+
+<div class="feature-item">
+    <figure class="icon-wrapper">
+      <div set:html={icon} class="icon-container"></div>
+    </figure>
+    <h3>{title}</h3>
+    <p>{description}</p>
+</div>
+
+<style>
+  .feature-item {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+    border: none;
+    padding: clamp(1rem, 0.857rem + 0.71vw, 1.5rem) clamp(0.8rem, 0.743rem + 0.29vw, 1rem);
+    color: var(--primary-color);
+    background-color: var(--background-light-color);
+  }
+
+  .icon-wrapper {
+    display: flex;
+    inline-size: 100%;
+    block-size: 3rem;
+  }
+
+  .icon-container {
+    display: flex;
+    min-inline-size: 100%;
+  }
+
+    .icon-container svg {
+    width: 100%;
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    max-inline-size: 100%;
+    max-block-size: 100%;
+    object-fit: contain;
+  }
+
+  h3 {
+    font-size: var(--subtitle2);
+  }
+
+  p {
+    font-size: var(--text);
+  }
+</style>

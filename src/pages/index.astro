@@ -1,11 +1,36 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Hero from '@components/Hero.astro';
+import Navigation from '@components/Navigation.astro';
+import NavigationComponent from '@components/navigation/NavigationComponent.astro';
+import FeaturesSection from '@components/features/FeaturesSection.astro';
+import ProductHighlight from '@components/product-highlights/ProductHighlight.astro';
+import BentoRenting from '@components/bento-renting/BentoRenting.astro';
+import SecondHandSection from '@components/second-hand/SecondHandSection.astro';
+import "@styles/global.css";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout Title="Solución Topografía">
+	<Navigation />
+	<Hero />
+	<NavigationComponent />
+	<ProductHighlight />
+	<BentoRenting />
+	<FeaturesSection />	
+	<SecondHandSection />
+		
+	
+	<section>
+		<div id="parent-div">Objetivo aquí</div>
+		<button hx-get="/partials/clicked/"
+			hx-trigger="click"
+			hx-target="#parent-div"
+			hx-swap="innerHTML"
+		>
+				¡Haz clic en mí!
+		</button>
+	</section>
+</BaseLayout>

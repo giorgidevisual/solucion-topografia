@@ -1,0 +1,35 @@
+---
+import FeatureItems from "./FeatureItem.astro";
+import { featuresInfo } from "@components/consts/featuresInfo";
+---
+<article>
+<section>
+  {featuresInfo.map((feature) => (
+    <FeatureItems
+      title={feature.title}
+      description={feature.description}
+      icon={feature.icon}
+    />
+  ))}
+</section>
+</article>
+<style>
+
+  article {
+    container: features / inline-size;
+    padding: 3rem;
+  }
+  section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    margin-inline: auto;
+  }
+
+  @container features (width < 480px){
+    section {
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 1rem;
+      margin: 3rem 1rem;
+    }
+  }
+</style>

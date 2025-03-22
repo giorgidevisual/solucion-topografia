@@ -1,0 +1,162 @@
+---
+import { productHighlights } from "@components/consts/productHighlights";
+---
+
+<article class="product-highlights-section">
+  <header class="product-highlight">
+    <div class="details-highlight">
+      <h2 id="product-title">{productHighlights[0].title}</h2>
+      <p id="product-description">{productHighlights[0].description}</p>
+    </div>
+    <figure class="image-highlight">
+      <img
+        id="product-image"
+        src={productHighlights[0].image}
+        alt="Imagen destacada del producto"
+      />
+    </figure>
+    <div class="buttons-container">
+      <button>Quiero ver el producto</button>
+    </div>
+  </header>
+  <div class="thumbnails">
+    {productHighlights.map(({ id, image, title, description }) => (
+      <a
+        class="product-highlight-link"
+        href="#"
+        data-id={id}
+        data-title={title}
+        data-description={description}
+        data-image={image}
+      >
+        <img
+          class="thumbnail"
+          src={image}
+          alt={title}
+        />
+      </a>
+    ))}
+  </div>
+</article>
+
+<style>
+  .product-highlights-section {
+    position: relative;
+    margin-block: 4rem;
+    margin-inline: 3rem;
+  }
+  .product-highlight {
+    display: flex;
+    flex-wrap: wrap;
+    block-size: auto;
+  }
+
+  .details-highlight,
+  .buttons-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex-grow: 1;
+    flex-basis: calc(55% / 2);
+    padding: 1rem;
+  }
+
+  :where(.details-highlight h2) {
+    font-size: var(--subtitle);
+    
+    color: var(--primary-color);
+  }
+  :where(.details-highlight p) {
+    font-size: var(--text); 
+  }
+
+  .image-highlight {
+    flex-grow: 1;
+    flex-basis: 45%;
+    text-align: center;
+    overflow: hidden;
+    padding-block: 1rem;
+    border-radius: 23px;
+    background: rgb(25,90,160);
+    background: -moz-linear-gradient(0deg, rgba(25,90,160,1) 0%, rgba(255,255,255,0) 55%);
+    background: -webkit-linear-gradient(0deg, rgba(25,90,160,1) 0%, rgba(255,255,255,0) 55%);
+    background: linear-gradient(0deg, rgba(25,90,160,1) 0%, rgba(255,255,255,0) 55%);;
+  }
+
+  .image-highlight img {
+    object-fit: contain;
+    block-size: 26rem;
+    aspect-ratio: 9/16; 
+ 
+    
+  }
+
+  .thumbnails {
+    position: absolute;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    z-index: 100;
+    left: 50%;
+    bottom: -16px;
+    transform: translateX(-50%);
+  }
+
+  .thumbnail {
+    display: grid;
+    width: 100px;
+    height: 100px;
+    border-radius: 23px;
+    border: 4px solid var(--primary-color);    
+    transition: all 0.3s ease;
+    background-color: var(--base2-color);
+
+    &:hover {
+      filter: brightness(1.1);
+      transform: scale(1.1);
+    }
+  }
+
+  button {
+    letter-spacing: .5px;
+    text-transform: uppercase;
+    font-size: var(--text);
+    background-color: var(--primary-color);
+    color: var(--base-color);
+    border:none;
+    border-radius: 50px;
+    padding: 1rem 1.5rem;
+    inline-size: fit-content;
+    transition: all .1s ease ;
+    margin-block-start: 2rem; 
+    margin-inline: auto;
+
+    &:hover {
+        background-color: var(--secondary-color);
+        color: var(--base-color);
+        transform: scale(1.1);
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const productHighlightLinks = document.querySelectorAll('.product-highlight-link');
+    const productHighlightTitle = document.getElementById('product-title') as HTMLElement;
+    const productHighlightDescription = document.getElementById('product-description') as HTMLElement;
+    const productHighlightImage = document.getElementById('product-image') as HTMLImageElement;
+
+    productHighlightLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const title = link.getAttribute('data-title') as string;
+        const description = link.getAttribute('data-description') as string;
+        const imageSrc = link.getAttribute('data-image') as string;
+
+        productHighlightTitle.textContent = title;
+        productHighlightDescription.textContent = description;
+        productHighlightImage.src = imageSrc;
+      });
+    });
+  });
+</script>

@@ -1,0 +1,58 @@
+---
+const { title, icon } = Astro.props;
+---
+<button>
+  <figure class="icon-wrapper">
+    <div set:html={icon} class="icon-container"></div>
+  </figure>
+  <h2>{title}</h2>
+</button>
+
+<style>
+  button {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: .8rem;
+    border: none;
+    padding: clamp(1rem, 0.857rem + 0.71vw, 1.5rem) clamp(0.8rem, 0.743rem + 0.29vw, 1rem);
+    color: var(--primary-color);
+    background-color: var(--background-light-color);
+    font-weight: 600;
+    font-size: clamp(1rem, 0.964rem + 0.18vw, 1.125rem);
+    letter-spacing: -0.3px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .icon-wrapper {
+    display: flex;
+    inline-size: 100%;
+    block-size: auto;
+  }
+
+  .icon-container {
+    display: flex;
+    min-inline-size: 100%;
+    justify-content: center;
+  }
+
+    .icon-container svg {
+    width: 100%;
+    height: auto; /* Permite que la altura se ajuste automáticamente */
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  h2 {
+    font-size: var(--subtitle2);
+  }
+
+  button:hover {
+    background-color: var(--secondary-color);
+    color: var(--background-light-color);
+    transform: scale(1.1);
+  }
+</style>
