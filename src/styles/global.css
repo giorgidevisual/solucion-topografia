@@ -11,8 +11,8 @@
   --font-light-color: var(--base-color);
   --title: 1.5rem;
   --subtitle: 1.438rem;
-  --subtitle2: 1.125rem;
-  --text: 1rem;
+  --subtitle2: clamp(0.875rem, 0.804rem + 0.36vw, 1.125rem);
+  --text: clamp(0.813rem, 0.76rem + 0.27vw, 1rem);
   
   --font-dark-color: #313131;
   --font-dark-color-2: #151515;

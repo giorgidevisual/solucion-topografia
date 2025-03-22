@@ -1,19 +1,12 @@
 ---
 import ButtonNavigation from './ButtonNavigation.astro';
-import iconEstacionTotal from '@assets/icon-estacion-total.svg?raw';
-import iconGPS from '@assets/icon-gps.svg?raw';
-import iconEscanerLaser from '@assets/icon-escaner-laser.svg?raw';
-import iconTablet from '@assets/icon-tablet.svg?raw';
-import iconCables from '@assets/icon-cables.svg?raw';
+import { navigationProduct } from "@components/consts/navigationProduct";
 ---
 <div>
   <nav>
-    <ButtonNavigation title="Estación Total" icon={iconEstacionTotal}/>
-    <ButtonNavigation title="GPS" icon={iconGPS}/>
-    <ButtonNavigation title="Escáner láser" icon={iconEscanerLaser}/>
-    <ButtonNavigation title="Tablets" icon={iconTablet}/>
-    <ButtonNavigation title="Accesorios" icon={iconCables}/>
-    <ButtonNavigation title="Cables" icon={iconCables}/>
+    {navigationProduct.map((item) => (
+      <ButtonNavigation title={item.title} icon={item.icon}/>
+    ))}
   </nav>
 </div>
 
