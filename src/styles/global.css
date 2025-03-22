@@ -55,6 +55,22 @@ img {
   object-fit: cover;
 }
 
+@layer titles {
+  .title {
+    color: inherit;
+  }
+
+  .subtitle {
+    color: inherit;
+    font-size: var(--subtitle);
+  }
+
+  .text {
+    color: inherit;
+    font-size: var(--text);
+  }
+}
+
 .nav-links {
   display: flex;
   justify-content: space-between;
@@ -64,3 +80,4 @@ img {
   padding: 0 20px;
 
 }
+
